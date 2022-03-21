@@ -24,8 +24,9 @@ A group of people that makes sure that whatever is released doesn't crash, and i
   - pay as you go
 
 ### AWS Global Infrastructure
+- An infrastructure of international data center regions, availability zones, CDNs and 200 more fully featured services.
+- That provides an easy, secure and reliable cloud platform that is also dynamic and extensible.
 - Most popular and used, holds the biggest market share currently
-- more to add later
 
 ## Regions vs Availability Zones
 - Region is where the availability zones are located
