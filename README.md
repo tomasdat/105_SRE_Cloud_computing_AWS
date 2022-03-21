@@ -7,6 +7,8 @@
 - creating github repo to to push the markdown doc
 - Amazon Web Services (AWS)
 
+### What is an SRE
+A group of people that makes sure that whatever is released doesn't crash, and if it does, it is their job to figure out why as quickly as possible so nothing needs to stop operations.
 
 ### Benefits of Cloud Computing
 - Ease of use
@@ -34,14 +36,15 @@
 - Both regions and AZs can be autoscaled, which means if one doesn't work, another replaces it (after the switching)
 
 ### Four Pillars of Cloud Computing
-- Performance
-- Security
-- Reliability
+- Performance - scalable by adding nodes
+- Security - both physical and virtual
+- Reliability - many services offered, e.g. autoscaling, CDN
 - Functionality
 
 ### What is CDN
-- Stands for Content delivery network
+- Stands for Content Delivery Network
 - The goal is to reduce latency for the end-user by making the connection spatially as close as possible
+- It does so by caching content close to the user
 
 ### ON-PREM vs HYBRID
 - Hybrid cloud refers to a mix of on-prem storage, private cloud services and public cloud services such as AWS.
