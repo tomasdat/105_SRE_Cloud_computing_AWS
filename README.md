@@ -55,3 +55,18 @@ A group of people that makes sure that whatever is released doesn't crash, and i
 - On-prem is more secure and reliable but reliant on physical maintenance
 - Public cloud removes responsibility and pressure of maintenance
   - it is also easily scalable
+
+### Connection between local host and public cloud (AWS)
+- requires permissions through roles, ports and keys
+
+### Local Host
+- local machine, desktop pc, laptop
+- Stores file.pem (in .ssh folder) to access public cloud
+
+### Public Cloud
+- AWS
+- Needs to be secure
+  - Creates aws file.pem as SSH key
+  - important, key is not shared with non-authorised parties
+- we need to create a virtual machine on the cloud - ec2 (elastic compute service)
+  - virtual machine similar to hardware - requires specific components 
