@@ -166,3 +166,26 @@ sudo systemctl enable nginx
 - change the file to exe `chmod +x provision.sh`
 - how to run an exe file `./provision.sh`
 
+### Bash scripting - TomCat
+```bash
+#before
+#ensure port 8080 is enabled - in AWS, add new security group with inbound port 8080 open
+#ensure this file has executable rights: chmod +x nameofthisfile
+#run this file: sudo ./nameofthisfile
+
+#actual script
+#!/bin/bash
+
+#get updates
+sudo apt-get update -y
+#get upgrades
+sudo apt-get upgrade -y
+#install tomcat9
+sudo apt-get install tomcat9 -y
+#start tomcat9
+sudo systemctl start tomcat9
+#enable tomcat9
+sudo systemctl enable tomcat9
+#check if running - optional, remember to ctrl+c to exit
+sudo systemctl status tomcat9
+```
