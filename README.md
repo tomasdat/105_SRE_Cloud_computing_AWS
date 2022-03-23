@@ -129,10 +129,12 @@ A group of people that makes sure that whatever is released doesn't crash, and i
 - How to check `ls` or `ls -a`
 - How to create a file `touch name_file` or `nano name_file`
 - How to check content of the file witout going inside the file `cat name_file`
-- How to move a file `mv file.txt "folder_location"`
-- How to copy a file `cp file.txt "folder_location"`
-- code block
-``` bash
+- How to move a file `mv file.txt "folder_destination"`
+- How to copy a file `cp file.txt "folder_destination"`
+- How to delete folder `sudo rm -rf name_folder`
 
-
-```
+### File permissions
+- how to check a file permission `ll`
+- change file permission `chmod required_permission file_name`
+- write `w` read `r` exe `x`
+- https://chmod-calculator.com
