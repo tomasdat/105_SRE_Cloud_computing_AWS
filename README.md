@@ -99,18 +99,40 @@ A group of people that makes sure that whatever is released doesn't crash, and i
 ![Step 1](step_1.png)
 ##### 2. Locate your private key file .pem
 ![Step 2](step_2.png)
-##### 3. Run command chmod 400 on the file to make it read-only
+##### 3. Run command `chmod 400 filename` on the file to make it read-only
 ![Step 3](step_3.png)
-##### 4. Connect to instance using "ssh -i "filename.pem" user@dns"
+##### 4. Connect to instance using `ssh -i "filename.pem" user@dns`
 ![Step 4](step_4.png)
-##### 5. After success, use command "sudo apt update" to fetch the list of available updates
+##### 5. After success, use command `sudo apt update` to fetch the list of available updates
 ![Step 5](step_5.png)
-##### 6. Upgrade your server using "sudo apt upgrade", it might take a while
+##### 6. Upgrade your server using `sudo apt upgrade`, it might take a while
 ![Step 6](step_6.png)
-##### 7. Install nginx using "sudo apt install nginx" or "sudo apt-get install nginx"
+##### 7. Install nginx using `sudo apt install nginx` or `sudo apt-get install nginx`
 ![Step 7](step_7.png)
 ##### 8. Open browser and test public IP
 ![Step 8](step_8.png)
 
 ### Amazon Machine Image (AMI)
 - A saved version of your instance, which you can safely terminate after
+
+### Linux Command
+- How to start a service `sudo systemctl start name_service`
+- How to stop a service `sudo systemctl stop name_service`
+- How to check status `systemctl status name_service`
+- How to enable service `sudo systemctl enable name_service`
+- How to install a package `sudo apt-get install package_name -y` or `sudo apt install package_name -y`
+- How to remove a package `sudo apt remove package_name -y`
+- How to check all process `top`
+- Who am I `uname` or `uname -a`
+- Where am I `pwd`
+- Create a dir `mkdir dir_name`
+- How to check `ls` or `ls -a`
+- How to create a file `touch name_file` or `nano name_file`
+- How to check content of the file witout going inside the file `cat name_file`
+- How to move a file `mv file.txt "folder_location"`
+- How to copy a file `cp file.txt "folder_location"`
+- code block
+``` bash
+
+
+```
