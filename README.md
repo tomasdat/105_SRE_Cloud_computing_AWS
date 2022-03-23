@@ -72,44 +72,44 @@ A group of people that makes sure that whatever is released doesn't crash, and i
   - virtual machine similar to hardware - requires specific components
 
 ### How to create AWS virtual machine (EC2 instance)
-1. Log into your AWS account
-2. Select your desired Availability Zone
+##### 1. Log into your AWS account
+##### 2. Select your desired Availability Zone
 ![V M2](VM2.png)
-3. Search and select EC2
+##### 3. Search and select EC2
 ![V M3](VM3.png)
-4. Launch instance
+##### 4. Launch instance
 ![V M4](VM4.png)
-5. Select AMI (Amazon Machine Image) - example Ubuntu Server 18.04 LTS
+##### 5. Select AMI (Amazon Machine Image) - example Ubuntu Server 18.04 LTS
 ![V M5](VM5.png)
-6. Choose an Instance Type - example t2.micro
+##### 6. Choose an Instance Type - example t2.micro
 ![V M6](VM6.png)
-7. Next: Configure Instance Details (network, subnet, auto-assign...)
+##### 7. Next: Configure Instance Details (network, subnet, auto-assign...)
 ![V M7](VM7.png)
-8. Next: Add Storage
+##### 8. Next: Add Storage
 ![V M8](VM8.png)
-9. Next: Add Tags
+##### 9. Next: Add Tags
 ![V M9](VM9.png)
-10. Next: Configure Security Group
+##### 10. Next: Configure Security Group
 ![V M10](VM10.png)
-11. Review and Launch
+##### 11. Review and Launch
 ![V M11](VM11.png)
 
 ### How to connect to AWS through SSH and install nginx
-1. Open an SSH client (e.g. gitbash)
+##### 1. Open an SSH client (e.g. gitbash)
 ![Step 1](step_1.png)
-2. Locate your private key file .pem
+##### 2. Locate your private key file .pem
 ![Step 2](step_2.png)
-3. Run command chmod 400 on the file to make it read-only
+##### 3. Run command chmod 400 on the file to make it read-only
 ![Step 3](step_3.png)
-4. Connect to instance using "ssh -i "filename.pem" user@dns"
+##### 4. Connect to instance using "ssh -i "filename.pem" user@dns"
 ![Step 4](step_4.png)
-5. After success, use command "sudo apt update" to fetch the list of available updates
+##### 5. After success, use command "sudo apt update" to fetch the list of available updates
 ![Step 5](step_5.png)
-6. Upgrade your server using "sudo apt upgrade", it might take a while
+##### 6. Upgrade your server using "sudo apt upgrade", it might take a while
 ![Step 6](step_6.png)
-7. Install nginx using "sudo apt install nginx" or "sudo apt-get install nginx"
+##### 7. Install nginx using "sudo apt install nginx" or "sudo apt-get install nginx"
 ![Step 7](step_7.png)
-8. Open browser and test public IP
+##### 8. Open browser and test public IP
 ![Step 8](step_8.png)
 
 ### Amazon Machine Image (AMI)
