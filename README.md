@@ -74,43 +74,43 @@ A group of people that makes sure that whatever is released doesn't crash, and i
 ### How to create AWS virtual machine (EC2 instance)
 ##### 1. Log into your AWS account
 ##### 2. Select your desired Availability Zone
-![V M2](VM2.png)
+![V M2](Readme_Images/VM2.png)
 ##### 3. Search and select EC2
-![V M3](VM3.png)
+![V M3](Readme_Images/VM3.png)
 ##### 4. Launch instance
-![V M4](VM4.png)
+![V M4](Readme_Images/VM4.png)
 ##### 5. Select AMI (Amazon Machine Image) - example Ubuntu Server 18.04 LTS
-![V M5](VM5.png)
+![V M5](Readme_Images/VM5.png)
 ##### 6. Choose an Instance Type - example t2.micro
-![V M6](VM6.png)
+![V M6](Readme_Images/VM6.png)
 ##### 7. Next: Configure Instance Details (network, subnet, auto-assign...)
-![V M7](VM7.png)
+![V M7](Readme_Images/VM7.png)
 ##### 8. Next: Add Storage
-![V M8](VM8.png)
+![V M8](Readme_Images/VM8.png)
 ##### 9. Next: Add Tags
-![V M9](VM9.png)
+![V M9](Readme_Images/VM9.png)
 ##### 10. Next: Configure Security Group
-![V M10](VM10.png)
+![V M10](Readme_Images/VM10.png)
 ##### 11. Review and Launch
-![V M11](VM11.png)
+![V M11](Readme_Images/VM11.png)
 
 ### How to connect to AWS through SSH and install nginx
 ##### 1. Open an SSH client (e.g. gitbash)
-![Step 1](step_1.png)
+![Step 1](Readme_Images/step_1.png)
 ##### 2. Locate your private key file .pem
-![Step 2](step_2.png)
+![Step 2](Readme_Images/step_2.png)
 ##### 3. Run command `chmod 400 filename` on the file to make it read-only
-![Step 3](step_3.png)
+![Step 3](Readme_Images/step_3.png)
 ##### 4. Connect to instance using `ssh -i "filename.pem" user@dns`
-![Step 4](step_4.png)
+![Step 4](Readme_Images/step_4.png)
 ##### 5. After success, use command `sudo apt update` to fetch the list of available updates
-![Step 5](step_5.png)
+![Step 5](Readme_Images/step_5.png)
 ##### 6. Upgrade your server using `sudo apt upgrade`, it might take a while
-![Step 6](step_6.png)
+![Step 6](Readme_Images/step_6.png)
 ##### 7. Install nginx using `sudo apt install nginx` or `sudo apt-get install nginx`
-![Step 7](step_7.png)
+![Step 7](Readme_Images/step_7.png)
 ##### 8. Open browser and test public IP
-![Step 8](step_8.png)
+![Step 8](Readme_Images/step_8.png)
 
 ### Amazon Machine Image (AMI)
 - A saved version of your instance, which you can safely terminate after
