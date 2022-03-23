@@ -55,7 +55,7 @@ A group of people that makes sure that whatever is released doesn't crash, and i
 - On-prem is more secure and reliable but reliant on physical maintenance
 - Public cloud removes responsibility and pressure of maintenance
   - it is also easily scalable
-
+---------------------------------------
 ### Connection between local host and public cloud (AWS)
 - requires permissions through roles, ports and keys
 
@@ -114,7 +114,7 @@ A group of people that makes sure that whatever is released doesn't crash, and i
 
 ### Amazon Machine Image (AMI)
 - A saved version of your instance, which you can safely terminate after
-
+---------------------------------------
 ### Linux Command
 - How to start a service `sudo systemctl start name_service`
 - How to stop a service `sudo systemctl stop name_service`
@@ -189,3 +189,84 @@ sudo systemctl enable tomcat9
 #check if running - optional, remember to ctrl+c to exit
 sudo systemctl status tomcat9
 ```
+---------------------------------------
+### Technical Interview Preparation
+##### What is a VPC
+- Stands for Virtual Private Cloud
+- Is a a secure, isolated private cloud hosted within a public cloud
+- Advantages:
+  - Scalability of public cloud computing
+  - Data isolation of private cloud computing
+  - Better performance, refer scalability
+  - Better security overall
+- Key technologies include:
+  - Internet Gateway
+  - Subnets
+  - VLAN
+  - VPN  
+- examples: Amazon VPC (public is AWS), Google Cloud VPC
+
+##### What is Internet Gateway
+- A horizontally scaled, redundant and highly available VPC component, EC2 service
+- Allows communication between VPC and internet
+- For example, allows local computer to connect to EC2 instance
+- Requirements:
+  - Attached to VPC
+  - Router(implicit) and Route tables (subnet)
+  - Instances in subnet have a unique IP address
+  - Network access control lists and security groups allow traffic
+
+##### What is Route Tables
+- A route table contains a set of rules, called *routes*
+- Determines where network traffic from your subnet or internet gateway is directed
+- Key concepts:
+  - Main route table
+  - Custom route table
+  - Destination - range of IP addresses
+  - Target - internet gateway, network interface, or connection
+  - Subnet route table
+- Each route in a table specifies a destination and a target
+
+##### What is Subnet
+- A range of IP addresses within a VPC
+- Types: Ipv4 only, Ipv6 only, Both
+- Can be public or private (with no internet gateway) or VPN only
+- Example: Customer-facing web servers in public subnet, database servers in private subnet
+- Uses NACLs to control traffic
+
+##### What is NACLs
+- Network access control lists
+- An optional layer of security for your VPC
+- Acts as firewall for controlling traffic in and out of one or more subnets
+- Rules have priorities based on their rule number
+- For each rule you have to specify:
+  - Rule number, Type, Protocol, Port Range, Source/Destination, Allow/Deny
+
+##### What is Security Group
+- Acts as a virtual firewall, controlling in and out traffic of the instance
+- A VPC comes with a default security group
+- Characteristics:
+  - Must have a name and a description
+  - You can specify allow rules for inbound and outbound, but not deny
+  - For each rule you have to specify Protocol, Port Range, Destination
+
+##### NACLs vs Security Group
+| Network ACL                  | Security group                 |
+|------------------------------|--------------------------------|
+| Operates at the subnet level | Operates at the instance level |
+| Supports allow rules and deny rules | Supports allow rules only |
+| Is stateless: Return traffic must be explicitly allowed by rules | Is stateful: Return traffic is automatically allowed, regardless of any rules|
+| We process rules in order, starting with the lowest numbered rule, when deciding whether to allow traffic | We evaluate all rules before deciding whether to allow traffic |
+| Automatically applies to all instances in the subnets that it's associated with (therefore, it provides an additional layer of defense if the security group rules are too permissive) | Applies to an instance only if someone specifies the security group when launching the instance, or associates the security group with the instance later on |
+
+##### How did you secure your app on the public cloud
+- Using security groups in our instances and setting inbound rules to allow specific traffic to come through
+
+##### What are the outbound rules for security group by default? And why?
+- It's set to All traffic, for Ipv4 and Ipv6.
+- We want to ensure that there is outbound communication for our inbound connections.
+- We are also less worried about exiting traffic than incoming traffic.
+
+##### What is the command to kill a process in Linux
+- `kill -9 <processId>` or `killall -9 process_name` (SIGKILL) - signal kill
+- `kill -2 <processId>` or ctrl+c (SIGINT) - signal interrupt
