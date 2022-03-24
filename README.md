@@ -1,3 +1,32 @@
+# Table of Contents
+> - [SRE Intro]
+>   - [User Journey]
+>     - [User experience]
+>       - [Cloud computing with AWS]
+>         - [AWS Services]
+>   - [What is an SRE]
+>   - [Benefits of Cloud Computing]
+>   - [AWS Global Infrastructure]
+>   - [Regions vs Availability Zones]
+>   - [Four Pillars of Cloud Computing]
+>   - [What is CDN]
+>   - [ON-PREM vs HYBRID]
+>   - [ON-PREM vs PUBLIC CLOUD]
+----------------------------
+> - [Connection between local host and public cloud (AWS)]
+> - [Local host]
+> - [Public cloud]
+> - [How to create AWS virtual machine (EC2 instance)]
+> - [How to connect to AWS through SSH and install nginx]
+> - [Amazon Machine Image (AMI)]
+> - [Linux Command]
+> - [File permissions]
+> - [Bash scripting - Automate process with the script]
+> - [Bash scripting - TomCat]
+> - [Technical Interview Preparation]
+> - [Monolith - N-tier - 2-tier & Microservices Architecture]
+> - [SRE Culture and CICD]
+
 # SRE Intro
 ## User Journey
 ### User experience
@@ -7,10 +36,10 @@
 - creating github repo to to push the markdown doc
 - Amazon Web Services (AWS)
 
-### What is an SRE
+##### What is an SRE
 A group of people that makes sure that whatever is released doesn't crash, and if it does, it is their job to figure out why as quickly as possible so nothing needs to stop operations.
 
-### Benefits of Cloud Computing
+##### Benefits of Cloud Computing
 - Ease of use
   - don't need to think about buying a whole system, just rent one
   - no need to maintain it either, third-party handles it
@@ -23,12 +52,12 @@ A group of people that makes sure that whatever is released doesn't crash, and i
   - cheaper than in-prem
   - pay as you go
 
-### AWS Global Infrastructure
+##### AWS Global Infrastructure
 - An infrastructure of international data center regions, availability zones, CDNs and 200 more fully featured services.
 - That provides an easy, secure and reliable cloud platform that is also dynamic and extensible.
 - Most popular and used, holds the biggest market share currently
 
-## Regions vs Availability Zones
+##### Regions vs Availability Zones
 - Region is where the availability zones are located
 - Availability zones is a data center that is managed on-site
 - Multiple regions are more costly than multiple availability zones
@@ -36,22 +65,22 @@ A group of people that makes sure that whatever is released doesn't crash, and i
   - or potentially lose users, time, and money
 - Both regions and AZs can be autoscaled, which means if one doesn't work, another replaces it (after the switching)
 
-### Four Pillars of Cloud Computing
+##### Four Pillars of Cloud Computing
 - Performance - scalable by adding nodes
 - Security - both physical and virtual
 - Reliability - many services offered, e.g. autoscaling, CDN
 - Functionality
 
-### What is CDN
+##### What is CDN
 - Stands for Content Delivery Network
 - The goal is to reduce latency for the end-user by making the connection spatially as close as possible
 - It does so by caching content close to the user
 
-### ON-PREM vs HYBRID
+##### ON-PREM vs HYBRID
 - Hybrid cloud refers to a mix of on-prem storage, private cloud services and public cloud services such as AWS.
 - more to add later
 
-### ON-PREM vs PUBLIC CLOUD
+##### ON-PREM vs PUBLIC CLOUD
 - On-prem is more secure and reliable but reliant on physical maintenance
 - Public cloud removes responsibility and pressure of maintenance
   - it is also easily scalable
@@ -270,3 +299,51 @@ sudo systemctl status tomcat9
 ##### What is the command to kill a process in Linux
 - `kill -9 <processId>` or `killall -9 process_name` (SIGKILL) - signal kill
 - `kill -2 <processId>` or ctrl+c (SIGINT) - signal interrupt
+----------------------------------------------------
+### Monolith - N-tier - 2-tier & Microservices Architecture
+##### Monolith
+![Mono](Readme_Images/mono.png)
+##### Microservices
+![Microservices](Readme_Images/microservices.png)
+![Mono Vs Micro](Readme_Images/mono_vs_micro.png)
+
+### SRE Culture and CICD
+https://medium.com/@ahshahkhan/devops-culture-and-cicd-3761cfc62450
+
+##### What is Docker
+- virtualization platform to containerise your app
+![Docker](Readme_Images/docker.png)
+
+##### CICD
+- a pipeline
+- Benefits:
+  - faster software builds
+  - customer satisfaction by deploying the app in time
+  - fault isolation simpler and quicker
+
+##### Continuous Integration
+- Automated test process
+![Continuous Integration](Readme_Images/continuous_integration.png)
+
+##### Continuous Delivery
+- Automated release, manual deployment
+![Continuous Delivery](Readme_Images/continuous_delivery.png)
+
+##### Continuous Deployment
+- Automated deployment to customers
+![Continuous Delivery Deployment](Readme_Images/continuous_delivery_deployment.png)
+
+##### What is Jenkins
+- Open-source Java-based CICD tool
+![Jenkins](Readme_Images/jenkins.png)
+
+### SDLC - Software Development Lifecycle
+- It’s the process of end to end product development.
+- Products need to follow a certain life cycle.
+- The Stages are:
+  - Planning
+  - Designing
+  - Development
+  - Testing
+  - Staging
+![S D L C](Readme_Images/SDLC.png)
