@@ -1,5 +1,5 @@
-# Table of Contents
-- [SRE Intro]
+<!-- # Table of Contents
+- [SRE Intro](#sre_intro)
   - [User Journey]
     - [User experience]
        - [Cloud computing with AWS]
@@ -25,7 +25,7 @@
 - [Bash scripting - TomCat]
 - [Technical Interview Preparation]
 - [Monolith - N-tier - 2-tier & Microservices Architecture]
-- [SRE Culture and CICD]
+- [SRE Culture and CICD] -->
 
 # SRE Intro
 ## User Journey
