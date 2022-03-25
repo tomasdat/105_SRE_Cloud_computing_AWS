@@ -347,3 +347,48 @@ https://medium.com/@ahshahkhan/devops-culture-and-cicd-3761cfc62450
   - Testing
   - Staging
 ![S D L C](Readme_Images/SDLC.png)
+-------------------------------------
+### Amazon S3 - Simple Storage Service
+- Offers storage classes -  based on the data access, resiliency, and cost requirements of your workloads
+- globally available = HIGHLY available
+- Types:
+  - Frequent
+  - Infrequent
+  - Archive
+- Use cases:
+  - Storage for Internet
+  - Backup and Disaster Recovery
+  - Analytics
+  - Data Archiving
+  - Static Website Hosting
+  - Security and Compliance
+![S3 Included Diagram](Readme_Images/S3-included-diagram.png)
+### AWSCLI S3 Tutorial
+```bash
+# update & upgrade
+sudo apt update
+sudo apt upgrade -y
+# install python 3.7
+sudo apt install python3
+# let system know that we are going to use python version python.3
+alias python=python3
+# check python --version
+python --version
+# install pip3
+sudo apt install python3-pip
+# install awscli
+sudo apt install awscli
+python3 -m pip install awscli
+# set up aws config to store aws keys to access s3 from our ec2
+aws configure
+# CRUD 
+# create a bucket on s3
+aws s3 mb s3://folder-name
+# upload data from ec2 to s3 -
+aws s3 cp data.dat s3://folder-name
+# download - from s3 -
+aws s3 cp s3://folder-name/data.dat /home/user
+# delete the data on s3 from ec2 using awscli and delete bucket
+aws s3 rm s3://folder-name/data.dat
+aws s3 rb s3://folder-name
+```
