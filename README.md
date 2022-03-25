@@ -338,7 +338,7 @@ https://medium.com/@ahshahkhan/devops-culture-and-cicd-3761cfc62450
 ![Jenkins](Readme_Images/jenkins.png)
 
 ### SDLC - Software Development Lifecycle
-- It’s the process of end to end product development.
+- ItÂ’s the process of end to end product development.
 - Products need to follow a certain life cycle.
 - The Stages are:
   - Planning
@@ -346,6 +346,7 @@ https://medium.com/@ahshahkhan/devops-culture-and-cicd-3761cfc62450
   - Development
   - Testing
   - Staging
+
 ![S D L C](Readme_Images/SDLC.png)
 -------------------------------------
 ### Amazon S3 - Simple Storage Service
