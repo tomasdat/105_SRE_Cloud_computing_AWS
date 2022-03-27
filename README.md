@@ -393,3 +393,17 @@ aws s3 cp s3://folder-name/data.dat /home/user
 aws s3 rm s3://folder-name/data.dat
 aws s3 rb s3://folder-name
 ```
+
+### How to deploy an API with database in an EC2 instance (Ubuntu/Linux)
+Requirements:
+- AWS EC2 (t2.small)
+- Ubuntu AMI
+- Nginx installed
+- API project + Database
+- Gitbash, Postman (optional)
+- Security gates:
+  - SSH - 22
+  - HTTP - 80
+  - TCP - 5000
+  - TCP - 5001
+  - TCP - 1433
