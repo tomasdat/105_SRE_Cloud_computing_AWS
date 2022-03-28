@@ -27,17 +27,13 @@
 - [Monolith - N-tier - 2-tier & Microservices Architecture]
 - [SRE Culture and CICD] -->
 
-# SRE Intro
-## User Journey
-### User experience
-#### Cloud computing with AWS
+##### SRE Intro
+- A group of people that makes sure that whatever is released doesn't crash, and if it does, it is their job to figure out why as quickly as possible so nothing needs to stop operations.
+##### User Journey
+##### User experience
+##### Cloud computing with AWS
 ##### AWS Services
-
-- creating github repo to to push the markdown doc
 - Amazon Web Services (AWS)
-
-##### What is an SRE
-A group of people that makes sure that whatever is released doesn't crash, and if it does, it is their job to figure out why as quickly as possible so nothing needs to stop operations.
 
 ##### Benefits of Cloud Computing
 - Ease of use
@@ -311,7 +307,6 @@ sudo systemctl status tomcat9
 https://medium.com/@ahshahkhan/devops-culture-and-cicd-3761cfc62450
 
 ##### What is Docker
-- virtualization platform to containerise your app
 ![Docker](Readme_Images/docker.png)
 
 ##### CICD
@@ -394,7 +389,7 @@ aws s3 rm s3://folder-name/data.dat
 aws s3 rb s3://folder-name
 ```
 
-### How to deploy an API with database in an EC2 instance (Ubuntu/Linux)
+##### How to deploy an API with database in an EC2 instance (Ubuntu/Linux)
 Requirements:
 - AWS EC2 (t2.small)
 - Ubuntu AMI
@@ -407,3 +402,95 @@ Requirements:
   - TCP - 5000
   - TCP - 5001
   - TCP - 1433
+![Diagram](Readme_Images/diagram.png)
+
+![Docker Header](Readme_Images/docker_header.png)
+### What is Docker
+- Open-source platform for containeristaion
+- Platform-independent, runs on any OS
+![Docker What Is](Readme_Images/docker_what_is.png)
+##### VM vs Docker
+- Docker shares resources
+- Container has its own network
+- Create images and volumes
+- Has its own Docker CLI, REST API, Docker machine
+![Vm Vs Docker](Readme_Images/vm_vs_docker.png)
+##### Why Docker...?
+![Why Docker](Readme_Images/why_docker.png)
+
+##### How to install Docker
+For Windows: https://docs.docker.com/desktop/windows/install/
+
+##### Docker commands
+- `docker images`: shows all images available
+- `docker pull <image_name>`: pull an image from docker hub
+- `docker run -p <port:port> -d image_name`: run a container from an image (pull if necessary)
+- `docker ps -a`: shows all containers
+- `docker stop <container_name|container_id>`: stops the container
+- `docker rm <container_name|container_id>`: removes the container
+- `docker exec <container_name|container_id>`: access the running container
+- `docker history <image_name>`: shows history
+- `docker commit <container_name> <username/image_name>`: creates a new image from a container
+- `docker push <username/image_name:version>`: pushes the images to the docker hub
+- `docker image rm <image_name>`: deletes the image
+- `docker run -d -p 4000:4000 docs/docker.github.io`: docker docks
+
+### Let's do some exercises!
+##### How to change the NGINX homepage from our container
+- First, we have to access our container, so we can make commands in it
+```bash
+alias docker="winpty docker" #(if on windows) 
+docker exec -it <container_name|container_id> sh
+```
+- Then we have to navigate towards the folder where the homepage file resides.
+```bash
+cd usr/share/nginx/html
+```
+- Check if the index.html is in the folder.
+```bash
+ls
+```
+- Check the contents of the file and compare it to homepage, to make sure it's the right file.
+```bash
+cat index.html
+```
+- To edit the file, we will need to install nano.
+```bash
+apt-get update
+apt-get install nano -y
+```
+- Edit the file using nano and make your desired changes.
+```bash
+nano index.html
+# save using ctrl+x, y, enter
+```
+- Check the homepage and your changes should be visible!
+
+##### How to make a global image out of your existing container
+- First, you will need a Docker Hub account.
+
+- Once you have your account, you can begin using docker commands.
+- Commit your container and insert your account details, including the desired image name.
+```bash
+docker commit <container_name|container_id> <username/image_name>
+```
+- Push it the commited image (default version: latest).
+```bash
+docker push <username/image_name:version>
+```
+- Your container image should now be global and be accessed by anyone with the link. 
+
+- Let's test it out by removing our container first. Let's stop and remove it.
+```bash
+docker stop <container_name|container_id>
+docker rm <container_name|container_id>
+```
+- Our container is now gone. Let's pull our container image.
+```bash
+docker pull <username/image_name:version>
+```
+- And run it.
+```bash
+docker run -d -p <port:port> <username/image_name:version>
+```
+- Check the port on your localhost and it should be identical!
