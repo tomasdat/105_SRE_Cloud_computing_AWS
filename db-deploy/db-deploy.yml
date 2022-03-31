@@ -7,29 +7,31 @@ kind: Deployment # what kind of service/object you want to create
 
 # what would you like to call it
 metadata:
-  name: api-deployment # naming the deployment
+  name: mssql-deployment # naming the deployment
 
 spec:
+  replicas: 1
   selector:
     matchLabels:
-      app: api # look for this label to match with k8 service
-  
-  # Let's create a replica set of this with 2 instaces/pods
-  replicas: 3 
+      app: mssql # look for this label to match with k8 service
 
   # template to use it's label for K8 service to launch in the browser
   template:
     metadata:
       labels:
-        app: api # this label connects to the service or any other k8 components
+        app: mssql # this label connects to the service or any other k8 components
     
     # Let's define the container spec
-    spec:
+    spec:  
+      terminationGracePeriodSeconds: 30
+      hostname: mssqlinst
+      securityContext:
+        fsGroup: 10001
       containers:
-      - name: api
-        image: tomasdat/105_api_project
+      - name: mssql
+        image: tomasdat/northwind-db:latest
         ports:
-        - containerPort: 80
+        - containerPort: 1433
         env:
         - name: MSSQL_PID
           value: "Developer"
@@ -40,3 +42,11 @@ spec:
             secretKeyRef:
               name: mssql
               key: SA_PASSWORD
+        volumeMounts:
+          - name: mssql-persistent-storage
+            mountPath: /var/lib/mssql
+      volumes:
+      - name: mssql-persistent-storage
+        persistentVolumeClaim:
+          claimName: mssql-pv-claim
+        

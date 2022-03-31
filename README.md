@@ -778,11 +778,7 @@ create a service - cluster-ip, NodePort - Loadbalancer
 
 #### Deployment
 
-```yaml
-# K8 works with API versions to declare the resources
-
-# YML is case sensitive -indentation of YML is important
-# use spaces, not a tab
+```yaml 
 apiVersion: apps/v1
 kind: Deployment # what kind of service/object you want to create
 
@@ -843,3 +839,174 @@ spec:
 API Cluster Diagram
 
 ![Kubernetes Cluster](Readme_Images/API_cluster.png)
+
+---
+
+![API plan](Readme_Images/API_plan.png)
+
+### User Data script (similar to AMI)
+
+```
+#!/bin/bash
+sudo apt update -y
+sudo apt upgrade -y
+sudo apt install nginx -y
+```
+
+### Install Docker and Kubernetes on EC2 Instance:
+
+Install Minikube: https://www.radishlogic.com/kubernetes/running-minikube-in-aws-ec2-ubuntu/
+
+```bash
+# install docker
+sudo apt update -y
+sudo apt install docker.io -y
+
+# install kubectl
+curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/amd64/kubectl
+chmod +x ./kubectl
+sudo mv ./kubectl /usr/local/bin/kubectl
+
+# install minikube
+curl -Lo minikube https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64 && chmod +x minikube && sudo mv minikube /usr/local/bin/
+
+# install conntrack
+sudo apt install conntrack
+
+# start minikube
+sudo minikube start --vm-driver=none
+```
+
+### How to Deploy the API Cluster:
+
+```bash
+# copy the yml files (deployment, service)
+scp -i ~/.ssh/105.pem source-path destination-path:
+
+# create the deployment
+kubectl create -f api-deployment.yml
+
+# create the service
+kubectl create -f api-service.yml
+
+# check the service, deployments, pods
+kubectl get all
+```
+
+### Some additional commands
+
+`kubectl edit <service_type_name>`: edit the YML configurations (I = insert, !wq = save and exit)
+
+### MSSQL Database Deployment
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment # what kind of service/object you want to create
+
+# what would you like to call it
+metadata:
+  name: mssql-deployment # naming the deployment
+
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mssql # look for this label to match with k8 service
+
+  # template to use it's label for K8 service to launch in the browser
+  template:
+    metadata:
+      labels:
+        app: mssql # this label connects to the service or any other k8 components
+    
+    # Let's define the container spec
+    spec:  
+      terminationGracePeriodSeconds: 30
+      hostname: mssqlinst
+      securityContext:
+        fsGroup: 10001
+      containers:
+      - name: mssql
+        image: tomasdat/northwind-db:latest
+        ports:
+        - containerPort: 1433
+        env:
+        - name: MSSQL_PID
+          value: "Developer"
+        - name: ACCEPT_EULA
+          value: "Y"
+        - name: SA_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: mssql
+              key: SA_PASSWORD
+        volumeMounts:
+          - name: mssql-persistent-storage
+            mountPath: /var/lib/mssql
+      volumes:
+      - name: mssql-persistent-storage
+        persistentVolumeClaim:
+          claimName: mssql-pv-claim
+```
+
+### Database Service
+
+```yaml
+# Select the type of API version and type of service/object
+apiVersion: v1
+kind: Service
+
+# metadata for name
+metadata:
+  name: mssql-svc
+  namespace: default #
+
+# Specification to include ports Selector to connect to the deployment
+spec:
+  ports:
+  - port: 1433
+    protocol: TCP
+    targetPort: 1433
+
+  # Let's define the selector and label to connect to nginx deployment
+  selector:
+    app: mssql # this label connects this service to deployment
+
+  # Creating LoadBalancer type of deployment
+  type: LoadBalancer
+```
+
+### Database Volume
+
+```yaml
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: mssql-pv-volume
+  labels:
+    type: local
+spec:
+  storageClassName: manual
+  capacity:
+    storage: 2Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: "/mnt/data"
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mssql-pv-claim
+spec:
+  storageClassName: manual
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 2Gi
+```
+### Stateful vs Stateless
+
+![Stateful vs stateless diagram](Stateful_vs_stateless_diagram.png)
+![Stateful vs stateless](Readme_Images/Stateful_vs_stateless.png)

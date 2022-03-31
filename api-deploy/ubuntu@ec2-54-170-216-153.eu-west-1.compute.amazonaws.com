@@ -29,4 +29,4 @@ spec:
       - name: api
         image: tomasdat/105_api_project
         ports:
-        - containerPort: 80
+        - containerPort: 82

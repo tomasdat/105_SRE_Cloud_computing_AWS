@@ -13,7 +13,7 @@ spec:
   - nodePort: 30442 # range is 30000-32768
     port: 81
     protocol: TCP
-    targetPort: 80
+    targetPort: 82
 
   # Let's define the selector and label to connect to nginx deployment
   selector:
