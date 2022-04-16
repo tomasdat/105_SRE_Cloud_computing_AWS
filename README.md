@@ -1008,5 +1008,5 @@ spec:
 ```
 ### Stateful vs Stateless
 
-![Stateful vs stateless diagram](Stateful_vs_stateless_diagram.png)
+![Stateful vs stateless diagram](Readme_Images/Stateful_vs_stateless_diagram.png)
 ![Stateful vs stateless](Readme_Images/Stateful_vs_stateless.png)
